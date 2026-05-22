@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Definitiva – Examen CNSF Asesor de Seguros</title>
+<style>
+  :root {
+    --navy: #1a2e4a; --blue: #2563eb; --sky: #e8f0fe;
+    --green: #166534; --green-bg: #dcfce7; --green-border: #86efac;
+    --amber: #92400e; --amber-bg: #fef3c7; --amber-border: #fcd34d;
+    --red: #991b1b; --red-bg: #fee2e2; --red-border: #fca5a5;
+    --purple: #5b21b6; --purple-bg: #ede9fe; --purple-border: #c4b5fd;
+    --gray: #374151; --light: #f8fafc; --border: #e2e8f0;
+    --sidebar-w: 260px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #f1f5f9; color: var(--gray); display: flex; min-height: 100vh; }
+
+  /* SIDEBAR */
+  #sidebar {
+    width: var(--sidebar-w); background: var(--navy); color: #e2e8f0;
+    position: fixed; top: 0; left: 0; height: 100vh; overflow-y: auto;
+    display: flex; flex-direction: column; z-index: 100;
+  }
+  #sidebar h1 { font-size: 1rem; font-weight: 700; padding: 1.2rem 1rem 0.5rem; color: #fff; line-height: 1.3; }
+  #sidebar .subtitle { font-size: 0.7rem; color: #94a3b8; padding: 0 1rem 1rem; border-bottom: 1px solid #2d4a6e; }
+  .nav-section { padding: 0.6rem 0; border-bottom: 1px solid #2d4a6e; }
+  .nav-label { font-size: 0.65rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.4rem 1rem; }
+  .nav-link { display: block; padding: 0.45rem 1rem; font-size: 0.8rem; color: #cbd5e1; text-decoration: none; cursor: pointer; transition: all 0.15s; border-left: 3px solid transparent; }
+  .nav-link:hover { background: #243a5a; color: #fff; border-left-color: var(--blue); }
+  .nav-link.active { background: #1e3a5f; color: #fff; border-left-color: #60a5fa; }
+  .badge { display: inline-block; background: #3b82f6; color: #fff; font-size: 0.6rem; padding: 0.1rem 0.4rem; border-radius: 99px; margin-left: 0.4rem; }
+
+  /* MAIN */
+  #main { margin-left: var(--sidebar-w); flex: 1; padding: 2rem; max-width: 960px; }
+
+  .section { display: none; animation: fadeIn 0.3s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
+
+  h2 { font-size: 1.6rem; color: var(--navy); border-bottom: 3px solid var(--blue); padding-bottom: 0.5rem; margin-bottom: 1.2rem; }
+  h3 { font-size: 1.1rem; color: var(--navy); margin: 1.5rem 0 0.6rem; }
+  h4 { font-size: 0.95rem; color: #1e40af; margin: 1rem 0 0.4rem; }
+  p { line-height: 1.6; margin-bottom: 0.7rem; }
+  ul { padding-left: 1.4rem; margin-bottom: 0.8rem; }
+  li { line-height: 1.7; }
+
+  /* CARDS */
+  .card { background: #fff; border-radius: 10px; padding: 1.2rem; margin-bottom: 1rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1.2rem; }
+
+  /* ALERT BOXES */
+  .alert { border-radius: 8px; padding: 0.9rem 1rem; margin-bottom: 1rem; border-left: 4px solid; font-size: 0.88rem; }
+  .alert-green { background: var(--green-bg); border-color: var(--green-border); color: var(--green); }
+  .alert-amber { background: var(--amber-bg); border-color: var(--amber-border); color: var(--amber); }
+  .alert-red { background: var(--red-bg); border-color: var(--red-border); color: var(--red); }
+  .alert-blue { background: var(--sky); border-color: #93c5fd; color: #1e40af; }
+  .alert-purple { background: var(--purple-bg); border-color: var(--purple-border); color: var(--purple); }
+  .alert strong { display: block; margin-bottom: 0.3rem; font-size: 0.95rem; }
+
+  /* TABLES */
+  .tbl-wrap { overflow-x: auto; margin-bottom: 1rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th { background: var(--navy); color: #fff; padding: 0.6rem 0.8rem; text-align: left; }
+  td { padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--border); }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #eff6ff; }
+
+  /* TAG/PILLS */
+  .tag { display: inline-block; padding: 0.15rem 0.6rem; border-radius: 99px; font-size: 0.75rem; font-weight: 600; margin: 0.15rem; }
+  .tag-blue { background: #dbeafe; color: #1e40af; }
+  .tag-green { background: var(--green-bg); color: var(--green); }
+  .tag-red { background: var(--red-bg); color: var(--red); }
+  .tag-amber { background: var(--amber-bg); color: var(--amber); }
+  .tag-purple { background: var(--purple-bg); color: var(--purple); }
+
+  /* Q&A */
+  .qa-block { margin-bottom: 0.7rem; }
+  .qa-q { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 0.86rem; font-weight: 500; transition: background 0.15s; }
+  .qa-q:hover { background: var(--sky); }
+  .qa-q .arrow { font-size: 0.7rem; color: #94a3b8; transition: transform 0.2s; }
+  .qa-q.open .arrow { transform: rotate(180deg); }
+  .qa-a { display: none; background: var(--green-bg); border: 1px solid var(--green-border); border-top: none; border-radius: 0 0 8px 8px; padding: 0.7rem 1rem; font-size: 0.84rem; color: var(--green); }
+  .qa-a.visible { display: block; }
+  .qa-correct { color: #166534; font-weight: 700; }
+
+  /* MNEMONICS */
+  .mnemonic { background: linear-gradient(135deg, #ede9fe, #dbeafe); border-radius: 10px; padding: 1rem 1.2rem; margin: 0.8rem 0; border: 1px solid #c4b5fd; }
+  .mnemonic h4 { color: var(--purple); margin: 0 0 0.4rem; }
+
+  /* HIGHLIGHT */
+  .hl { background: #fef08a; padding: 0 3px; border-radius: 3px; }
+  .bold { font-weight: 700; }
+
+  /* GRID 2 */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media(max-width: 700px) { .grid2 { grid-template-columns: 1fr; } #sidebar { display: none; } #main { margin-left: 0; } }
+
+  /* HOME HERO */
+  .hero { background: linear-gradient(135deg, var(--navy), #1e40af); border-radius: 12px; padding: 2rem; color: #fff; margin-bottom: 1.5rem; }
+  .hero h2 { color: #fff; border-color: rgba(255,255,255,0.3); font-size: 1.8rem; }
+  .hero p { color: #bfdbfe; }
+  .module-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem; }
+  .module-card { background: #fff; border-radius: 10px; padding: 1rem; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; text-align: center; }
+  .module-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-color: var(--blue); }
+  .module-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .module-card h3 { font-size: 0.85rem; margin: 0; color: var(--navy); }
+
+  /* PROGRESS BAR fake */
+  .topics-list { list-style: none; padding: 0; }
+  .topics-list li { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+  .topics-list li::before { content: '📌'; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <h1>📚 Guía CNSF</h1>
+  <p class="subtitle">Asesor de Seguros · Examen CNSF</p>
+
+  <div class="nav-section">
+    <div class="nav-label">Inicio</div>
+    <a class="nav-link active" onclick="show('home')">🏠 Portada y Mapa de Estudio</a>
+    <a class="nav-link" onclick="show('plazos')">⏱️ Plazos y Fechas Clave</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Sistema Financiero</div>
+    <a class="nav-link" onclick="show('sf-estructura')">🏛️ Estructura del SF Mexicano</a>
+    <a class="nav-link" onclick="show('sf-instrumentos')">📈 Instrumentos Financieros</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Marco Legal</div>
+    <a class="nav-link" onclick="show('legal-marco')">⚖️ Leyes y Reglamentos</a>
+    <a class="nav-link" onclick="show('legal-contrato')">📝 Contrato de Seguro</a>
+    <a class="nav-link" onclick="show('legal-agentes')">🪪 Agentes de Seguros</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">RISP – Personas</div>
+    <a class="nav-link" onclick="show('risp-vida')">💙 Vida Individual</a>
+    <a class="nav-link" onclick="show('risp-accidentes')">🚑 Accidentes Personales</a>
+    <a class="nav-link" onclick="show('risp-gmm')">🏥 Gastos Médicos Mayores</a>
+    <a class="nav-link" onclick="show('risp-salud')">❤️ Seguro de Salud (ISES)</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">RISD – Daños</div>
+    <a class="nav-link" onclick="show('risd-autos')">🚗 Automóviles</a>
+    <a class="nav-link" onclick="show('risd-hogar')">🏠 Hogar (Póliza Múltiple)</a>
+    <a class="nav-link" onclick="show('risd-embarcaciones')">⛵ Embarcaciones</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Práctica</div>
+    <a class="nav-link" onclick="show('practica')">🎯 Preguntas de Repaso</a>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main id="main">
+
+<!-- ═══════════════════════ HOME ═══════════════════════ -->
+<section id="home" class="section active">
+  <div class="hero">
+    <h2>Guía Definitiva para el Examen CNSF</h2>
+    <p style="font-size:1.05rem; margin-top:0.5rem;">Preparada especialmente para <strong>ti</strong> — 20 años de experiencia + esta guía = ¡aprobado!</p>
+  </div>
+
+  <div class="alert alert-amber">
+    <strong>💡 Cómo usar esta guía</strong>
+    Navega por las secciones del menú izquierdo. Empieza por los <strong>Plazos y Fechas Clave</strong> (son muy frecuentes en el examen), luego revisa cada módulo temático. Al final practica con las preguntas de repaso.
+  </div>
+
+  <h3>Módulos del examen</h3>
+  <div class="module-cards">
+    <div class="module-card" onclick="show('sf-estructura')">
+      <div class="icon">🏛️</div>
+      <h3>Sistema Financiero Mexicano</h3>
+    </div>
+    <div class="module-card" onclick="show('legal-marco')">
+      <div class="icon">⚖️</div>
+      <h3>Marco Legal del Seguro</h3>
+    </div>
+    <div class="module-card" onclick="show('legal-agentes')">
+      <div class="icon">🪪</div>
+      <h3>Agentes de Seguros</h3>
+    </div>
+    <div class="module-card" onclick="show('risp-vida')">
+      <div class="icon">💙</div>
+      <h3>Vida Individual (RISP)</h3>
+    </div>
+    <div class="module-card" onclick="show('risp-gmm')">
+      <div class="icon">🏥</div>
+      <h3>Gastos Médicos Mayores</h3>
+    </div>
+    <div class="module-card" onclick="show('risd-autos')">
+      <div class="icon">🚗</div>
+      <h3>Automóviles (RISD)</h3>
+    </div>
+    <div class="module-card" onclick="show('risd-hogar')">
+      <div class="icon">🏠</div>
+      <h3>Hogar – Póliza Múltiple</h3>
+    </div>
+    <div class="module-card" onclick="show('risd-embarcaciones')">
+      <div class="icon">⛵</div>
+      <h3>Embarcaciones Menores</h3>
+    </div>
+  </div>
+
+  <h3>Temas más frecuentes en el examen</h3>
+  <ul class="topics-list">
+    <li>Plazos legales: 5 días aviso siniestro, 30 días pago, 2 años prescripción</li>
+    <li>Autoridades: funciones de SHCP, CNSF, CNBV, Banxico, CONDUSEF, CONSAR</li>
+    <li>Cédulas de agente A-H: qué cubre cada una</li>
+    <li>Coberturas del paquete amplio vs limitado de automóviles</li>
+    <li>Deducibles: automóviles, hogar, embarcaciones</li>
+    <li>Valores garantizados en vida: rescate, saldado, prorrogado, préstamo</li>
+    <li>Diferencia entre avería particular y avería gruesa</li>
+    <li>LGISMS vs LSCS vs RASF: qué regula cada ley</li>
+    <li>Diferencia Seguro de Salud (ISES) vs Gastos Médicos Mayores</li>
+    <li>Póliza Múltiple Familiar: 3 secciones y sus deducibles</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════ PLAZOS ═══════════════════════ -->
+<section id="plazos" class="section">
+  <h2>⏱️ Plazos y Fechas Clave</h2>
+  <div class="alert alert-red">
+    <strong>🔥 ¡MUY IMPORTANTE! Estos plazos aparecen frecuentemente en el examen. Memorízalos.</strong>
+  </div>
+
+  <div class="mnemonic">
+    <h4>🧠 Regla mnemotécnica: "5-30-24-15-30-2-1-10"</h4>
+    <p><strong>5</strong> días aviso siniestro · <strong>30</strong> días rectificación póliza · <strong>24</strong> hrs agravación riesgo · <strong>15</strong> días termina responsabilidad post-agravación · <strong>30</strong> días pago siniestro · <strong>2</strong> años prescripción · <strong>1</strong> año queja CONDUSEF · <strong>10</strong> días respuesta queja</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Plazo</th><th>Concepto</th><th>Artículo / Fuente</th></tr>
+      <tr><td class="bold">5 días</td><td>Aviso del siniestro a la aseguradora (desde que el asegurado tiene conocimiento)</td><td>Art. 66 LSCS</td></tr>
+      <tr><td class="bold">30 días</td><td>Plazo para solicitar rectificación de la póliza</td><td>LSCS</td></tr>
+      <tr><td class="bold">24 horas</td><td>Aviso de agravación del riesgo al asegurado</td><td>LSCS</td></tr>
+      <tr><td class="bold">15 días</td><td>Termina responsabilidad de la aseguradora tras agravación del riesgo (sin aviso)</td><td>LSCS</td></tr>
+      <tr><td class="bold">30 días</td><td>Pago del siniestro (desde entrega de documentos completos)</td><td>LSCS</td></tr>
+      <tr><td class="bold">72 horas</td><td>Plazo para valuar daños de un vehículo en automóviles</td><td>Póliza Autos</td></tr>
+      <tr><td class="bold">2 años</td><td>Prescripción de acciones derivadas del contrato de seguro</td><td>Art. 81 LSCS</td></tr>
+      <tr><td class="bold">1 año</td><td>Plazo para presentar queja ante CONDUSEF</td><td>LSCS/CONDUSEF</td></tr>
+      <tr><td class="bold">10 días hábiles</td><td>Plazo para responder queja de usuario</td><td>CONDUSEF</td></tr>
+      <tr><td class="bold">18 meses</td><td>Duración máxima de autorización provisional de agente</td><td>RASF</td></tr>
+      <tr><td class="bold">3 años</td><td>Vigencia de cédula de agente persona física</td><td>RASF</td></tr>
+      <tr><td class="bold">Indefinida</td><td>Vigencia de cédula de agente persona moral</td><td>RASF</td></tr>
+      <tr><td class="bold">90 días</td><td>Plazo para muerte/pérdida orgánica derivada de accidente (A.P. y Vida)</td><td>Pólizas RISP</td></tr>
+      <tr><td class="bold">3 anualidades</td><td>Requisito para valores garantizados en Vida Individual</td><td>LSCS/Pólizas</td></tr>
+      <tr><td class="bold">20 feb.</td><td>Inicio de cobertura PANDI en embarcaciones (anual)</td><td>Póliza Embarcaciones</td></tr>
+      <tr><td class="bold">30 días</td><td>Alta de recién nacido para cobertura GMM desde nacimiento</td><td>Pólizas GMM</td></tr>
+    </table>
+  </div>
+
+  <h3>Límites monetarios</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Monto</th><th>Concepto</th></tr>
+      <tr><td class="bold">≥ $10,000 USD equiv.</td><td>Umbral para "operación relevante" de lavado de dinero (reporte a SHCP)</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SF ESTRUCTURA ═══════════════════════ -->
+<section id="sf-estructura" class="section">
+  <h2>🏛️ Estructura del Sistema Financiero Mexicano</h2>
+
+  <div class="alert alert-blue">
+    <strong>📌 La máxima autoridad del Sistema Financiero es la SHCP</strong>
+    (Secretaría de Hacienda y Crédito Público)
+  </div>
+
+  <h3>Mapa de Autoridades</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h4>🏦 SHCP</h4>
+      <p><strong>Secretaría de Hacienda y Crédito Público</strong></p>
+      <ul>
+        <li>Máxima autoridad del sistema financiero</li>
+        <li>Autoriza la constitución de aseguradoras</li>
+        <li>Dicta política de seguros y fianzas</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🏛️ Banco de México (Banxico)</h4>
+      <ul>
+        <li>Banco central</li>
+        <li>Política <strong>monetaria</strong> y <strong>cambiaria</strong></li>
+        <li>Regula tipos de cambio e inflación</li>
+        <li>Emite CETES, Bondes, Udibonos</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>📊 CNBV</h4>
+      <p><strong>Comisión Nacional Bancaria y de Valores</strong></p>
+      <ul>
+        <li>Supervisa bancos y casas de bolsa</li>
+        <li>Regula el mercado de valores</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🛡️ CNSF</h4>
+      <p><strong>Comisión Nacional de Seguros y Fianzas</strong></p>
+      <ul>
+        <li>Supervisa aseguradoras y afianzadoras</li>
+        <li>Impone sanciones</li>
+        <li>Autoriza agentes de seguros (cédulas)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>👤 CONDUSEF</h4>
+      <p><strong>Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros</strong></p>
+      <ul>
+        <li>Protege a usuarios de servicios financieros</li>
+        <li>Asesorar, orientar, <strong>conciliar, arbitrar</strong></li>
+        <li>Función principal: <span class="hl">ARBITRAJE</span></li>
+        <li>Servicio <strong>gratuito</strong> para cualquier usuario</li>
+        <li>Plazo queja: <strong>1 año</strong></li>
+        <li>Plazo respuesta: <strong>10 días hábiles</strong></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>💰 CONSAR</h4>
+      <p><strong>Comisión Nacional del Sistema de Ahorro para el Retiro</strong></p>
+      <ul>
+        <li>Supervisa las AFORES y SIEFORES</li>
+        <li>Regula el ahorro para el retiro (pensiones)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mnemonic">
+    <h4>🧠 Mnemotécnica para las autoridades: "SHa-Ban-CN-CN-CO-CO"</h4>
+    <p><strong>SHa</strong>CP · <strong>Ban</strong>xico · <strong>CN</strong>BV · <strong>CN</strong>SF · <strong>CO</strong>NDUSEF · <strong>CO</strong>NSAR</p>
+  </div>
+
+  <h3>Tipos de Entidades Financieras</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>Entidades de depósito y crédito</h4>
+      <ul>
+        <li>Bancos (instituciones de crédito)</li>
+        <li>Sociedades Financieras de Objeto Limitado (SOFOLES)</li>
+        <li>Uniones de Crédito</li>
+        <li>Almacenes de Depósito</li>
+        <li>Arrendadoras Financieras</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Entidades de inversión y bolsa</h4>
+      <ul>
+        <li>Casas de Bolsa</li>
+        <li>Sociedades de Inversión</li>
+        <li>Operadoras de Sociedades de Inversión</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Tasas Financieras</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Tasa</th><th>Definición</th></tr>
+      <tr><td class="bold">Tasa activa</td><td>La que cobra el banco al prestar dinero (más alta)</td></tr>
+      <tr><td class="bold">Tasa pasiva</td><td>La que paga el banco al captar depósitos (más baja)</td></tr>
+      <tr><td class="bold">Tasa nominal</td><td>Sin descontar inflación</td></tr>
+      <tr><td class="bold">Tasa real</td><td>Descontando la inflación (puede ser negativa)</td></tr>
+      <tr><td class="bold">TIIE</td><td>Tasa de Interés Interbancaria de Equilibrio (referencia)</td></tr>
+      <tr><td class="bold">CPP</td><td>Costo Porcentual Promedio (tasa pasiva bancaria)</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SF INSTRUMENTOS ═══════════════════════ -->
+<section id="sf-instrumentos" class="section">
+  <h2>📈 Instrumentos y Productos Financieros</h2>
+
+  <h3>Instrumentos del Gobierno Federal (Deuda pública)</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Instrumento</th><th>¿Qué es?</th><th>Característica clave</th></tr>
+      <tr><td class="bold">CETES</td><td>Certificados de la Tesorería</td><td><span class="hl">Más líquidos y seguros</span> del mercado. Renta fija. Gobierno Federal.</td></tr>
+      <tr><td class="bold">Bondes</td><td>Bonos de Desarrollo del Gobierno Federal</td><td>Tasa variable. Plazo largo.</td></tr>
+      <tr><td class="bold">Udibonos</td><td>Bonos ligados a la inflación (UDI)</td><td>Tasa real + ajuste por <strong>INPC</strong>. Protege del alza de precios.</td></tr>
+      <tr><td class="bold">BREM's</td><td>Bonos de Regulación Monetaria del Banco de México</td><td>Emitidos por Banxico. Regulan la liquidez.</td></tr>
+      <tr><td class="bold">UMS</td><td>Bonos en dólares emitidos por el Gobierno Mexicano</td><td>En mercados internacionales. En USD.</td></tr>
+    </table>
+  </div>
+
+  <h3>Instrumentos Privados</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Instrumento</th><th>¿Qué es?</th><th>Característica</th></tr>
+      <tr><td class="bold">Acciones</td><td>Parte alícuota del capital de una empresa</td><td>Renta variable. <strong>Mayor riesgo</strong>. Bolsa de Valores.</td></tr>
+      <tr><td class="bold">Papel Comercial</td><td>Deuda de corto plazo de empresas privadas</td><td>Tasa fija. Menos seguro que CETES.</td></tr>
+      <tr><td class="bold">Obligaciones</td><td>Deuda de largo plazo de empresas</td><td>Con garantía hipotecaria o quirografaria.</td></tr>
+      <tr><td class="bold">Aceptaciones bancarias</td><td>Letras de cambio avaladas por banco</td><td>Corto plazo. Intermediación bancaria.</td></tr>
+    </table>
+  </div>
+
+  <div class="alert alert-amber">
+    <strong>⚠️ Para el examen recuerda:</strong>
+    CETES = máxima liquidez y seguridad · Acciones = mayor riesgo (renta variable) · Udibonos = protección contra inflación (ligados al INPC)
+  </div>
+
+  <h3>Clasificación de Riesgo</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>Renta Fija</h4>
+      <p>Rendimiento conocido de antemano. Menor riesgo.</p>
+      <p><span class="tag tag-blue">CETES</span> <span class="tag tag-blue">Bondes</span> <span class="tag tag-blue">Udibonos</span> <span class="tag tag-blue">Papel Comercial</span></p>
+    </div>
+    <div class="card">
+      <h4>Renta Variable</h4>
+      <p>Rendimiento fluctúa según el mercado. Mayor riesgo.</p>
+      <p><span class="tag tag-red">Acciones</span> <span class="tag tag-red">Fondos de inversión en renta variable</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ MARCO LEGAL ═══════════════════════ -->
+<section id="legal-marco" class="section">
+  <h2>⚖️ Marco Legal del Seguro en México</h2>
+
+  <h3>Las 3 Leyes Principales</h3>
+  <div class="card-grid">
+    <div class="card" style="border-top: 4px solid #2563eb;">
+      <h4>LGISMS</h4>
+      <p><strong>Ley General de Instituciones y Sociedades Mutualistas de Seguros</strong></p>
+      <ul>
+        <li>Regula la <strong>constitución y funcionamiento</strong> de las aseguradoras</li>
+        <li>SHCP autoriza a las aseguradoras con base en esta ley</li>
+        <li>Define cómo se organizan las instituciones</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top: 4px solid #16a34a;">
+      <h4>LSCS</h4>
+      <p><strong>Ley sobre el Contrato de Seguros</strong></p>
+      <ul>
+        <li>Regula el <strong>contrato de seguro</strong> en sí</li>
+        <li>Define derechos y obligaciones de las partes</li>
+        <li>Plazos: 5 días siniestro (Art. 66), 2 años prescripción (Art. 81)</li>
+        <li>Art. 150: aseguradora puede exigir reembolso si hubo omisiones</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top: 4px solid #9333ea;">
+      <h4>RASF</h4>
+      <p><strong>Reglamento de Agentes de Seguros y de Fianzas</strong></p>
+      <ul>
+        <li>Regula a los <strong>agentes de seguros</strong></li>
+        <li>Tipos de cédulas, vigencia, sanciones</li>
+        <li>Art. 27: sanciones (amonestación → multa → suspensión → inhabilitación → revocación)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Actores en la Actividad Aseguradora</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Actor</th><th>Rol</th></tr>
+      <tr><td class="bold">Asegurado</td><td>Quien tiene la póliza y sufre el siniestro</td></tr>
+      <tr><td class="bold">Asegurador</td><td>La compañía de seguros que asume el riesgo</td></tr>
+      <tr><td class="bold">Contratante</td><td>Quien firma y paga la póliza (puede ser distinto al asegurado)</td></tr>
+      <tr><td class="bold">Beneficiario</td><td>Quien recibe la indemnización</td></tr>
+      <tr><td class="bold">Intermediario / Agente</td><td>Vincula asegurado con aseguradora. Requiere cédula CNSF.</td></tr>
+      <tr><td class="bold">Ajustador</td><td>Representa a la aseguradora en siniestros. Deslinda responsabilidades.</td></tr>
+      <tr><td class="bold">Reasegurador</td><td>Asegura a la aseguradora (distribución de riesgo)</td></tr>
+      <tr><td class="bold">Autoridad</td><td>SHCP, CNSF, CONDUSEF</td></tr>
+    </table>
+  </div>
+
+  <h3>Operaciones de Seguro (3 ramos principales)</h3>
+  <div class="card-grid">
+    <div class="card" style="border-top:4px solid #2563eb">
+      <h4>💙 Vida</h4>
+      <ul>
+        <li>Existencia, supervivencia</li>
+        <li>Jubilación y retiro</li>
+        <li>Riesgos: <strong>Fallecimiento + Supervivencia</strong></li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid #dc2626">
+      <h4>🚑 Accidentes y Enfermedades</h4>
+      <ul>
+        <li>El accidente debe ser: <strong>súbito, violento, externo, fortuito</strong></li>
+        <li>Gastos Médicos Mayores</li>
+        <li>Accidentes Personales</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid #d97706">
+      <h4>🏠 Daños</h4>
+      <ul>
+        <li>Automóviles, Hogar, Embarcaciones</li>
+        <li>Incendio, Responsabilidad Civil</li>
+        <li>Agrícola, Crédito, etc.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Lavado de Dinero</h3>
+  <div class="alert alert-purple">
+    <strong>💜 Operación Relevante</strong>
+    Toda operación igual o mayor a <span class="hl">$10,000 USD equivalente</span> debe reportarse a la SHCP. Las aseguradoras tienen obligación de identificar a sus clientes y reportar operaciones inusuales.
+  </div>
+</section>
+
+<!-- ═══════════════════════ CONTRATO ═══════════════════════ -->
+<section id="legal-contrato" class="section">
+  <h2>📝 El Contrato de Seguro</h2>
+
+  <div class="alert alert-blue">
+    <strong>📌 Perfeccionamiento del contrato:</strong>
+    El contrato de seguro se perfecciona en el momento en que el proponente tiene conocimiento de la aceptación de la aseguradora.
+  </div>
+
+  <h3>Características del Contrato de Seguro</h3>
+  <div class="card-grid">
+    <div class="card"><h4>Consensual</h4><p>Se perfecciona con el consentimiento de ambas partes.</p></div>
+    <div class="card"><h4>Bilateral</h4><p>Genera obligaciones para ambas partes.</p></div>
+    <div class="card"><h4>Oneroso</h4><p>Hay contraprestación (pago de prima).</p></div>
+    <div class="card"><h4>Aleatorio</h4><p>Depende de un evento incierto (el siniestro).</p></div>
+    <div class="card"><h4>De adhesión</h4><p>El asegurado acepta condiciones predefinidas. Los contratos con usuarios financieros <strong>deben</strong> ser de adhesión.</p></div>
+    <div class="card"><h4>Nominativo</h4><p>La póliza debe ser nominativa cuando ampara personas.</p></div>
+  </div>
+
+  <h3>La Póliza</h3>
+  <ul>
+    <li>Es el <strong>documento</strong> que instrumenta el contrato de seguro</li>
+    <li>Plazo para solicitar rectificación: <strong>30 días</strong> desde que se recibe</li>
+    <li>Debe ser nominativa para personas</li>
+    <li>Se modifica mediante <strong>endosos</strong></li>
+  </ul>
+
+  <h3>Obligaciones del Asegurado en un Siniestro</h3>
+  <ol style="padding-left:1.4rem; line-height:2">
+    <li>Ejecutar todos los actos para <strong>evitar o disminuir el daño</strong></li>
+    <li>Dar aviso a la compañía <strong>tan pronto tenga conocimiento</strong> (máx. 5 días – Art. 66 LSCS)</li>
+    <li>Presentar <strong>formal reclamación</strong></li>
+  </ol>
+
+  <h3>Prima: Composición</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Tipo de Prima</th><th>Composición</th></tr>
+      <tr><td class="bold">Prima pura de riesgo</td><td>Solo el costo del riesgo (obtenida de tabla de mortalidad)</td></tr>
+      <tr><td class="bold">Prima de tarifa</td><td>Prima pura + gastos de operación + utilidad + recargos</td></tr>
+      <tr><td class="bold">Prima total</td><td>Prima de tarifa + derecho de póliza + impuestos</td></tr>
+      <tr><td class="bold">Prima nivelada</td><td>Promedia el costo de todo el plazo (genera reservas matemáticas)</td></tr>
+      <tr><td class="bold">Prima única</td><td>Pago en una sola exhibición por todo el plazo</td></tr>
+    </table>
+  </div>
+
+  <h3>Conceptos Básicos del Seguro</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Concepto</th><th>Definición</th></tr>
+      <tr><td class="bold">Riesgo puro</td><td>Solo puede producir pérdida. Es asegurable. Ej: incendio, accidente.</td></tr>
+      <tr><td class="bold">Riesgo especulativo</td><td>Puede producir pérdida O ganancia. No es asegurable. Ej: inversión en bolsa.</td></tr>
+      <tr><td class="bold">Siniestro</td><td>Realización del riesgo asegurado</td></tr>
+      <tr><td class="bold">Deducible</td><td>Cantidad a cargo del asegurado antes de que la aseguradora pague</td></tr>
+      <tr><td class="bold">Coaseguro</td><td>Porcentaje del siniestro que queda a cargo del asegurado (después del deducible)</td></tr>
+      <tr><td class="bold">Reaseguro</td><td>La aseguradora transfiere parte del riesgo a otra compañía (reaseguradora)</td></tr>
+      <tr><td class="bold">Extraprima</td><td>Sobrecosto cuando el riesgo es mayor al normal</td></tr>
+      <tr><td class="bold">Suma asegurada</td><td>Monto máximo que pagará la aseguradora</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════ AGENTES ═══════════════════════ -->
+<section id="legal-agentes" class="section">
+  <h2>🪪 Agentes de Seguros</h2>
+
+  <h3>Tipos de Cédula (A-H)</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Cédula</th><th>Tipo de Seguro que Autoriza</th></tr>
+      <tr><td class="bold"><span class="tag tag-blue">A</span></td><td>Vida individual y familiar</td></tr>
+      <tr><td class="bold"><span class="tag tag-blue">B</span></td><td>Vida empresarial (colectivos)</td></tr>
+      <tr><td class="bold"><span class="tag tag-amber">C</span></td><td>Riesgos especiales (daños)</td></tr>
+      <tr><td class="bold"><span class="tag tag-amber">D</span></td><td>Agrícola y de animales</td></tr>
+      <tr><td class="bold"><span class="tag tag-amber">E</span></td><td>Crédito</td></tr>
+      <tr><td class="bold"><span class="tag tag-purple">F</span></td><td>Fianzas</td></tr>
+      <tr><td class="bold"><span class="tag tag-red">G</span></td><td>Pensiones derivadas del IMSS/ISSSTE — <strong>solo puede trabajar con UNA aseguradora</strong></td></tr>
+      <tr><td class="bold"><span class="tag tag-red">H</span></td><td>Pensiones derivadas de otras (también solo una aseguradora)</td></tr>
+    </table>
+  </div>
+
+  <div class="mnemonic">
+    <h4>🧠 Para recordar A y B: "A de Alguien (individual), B de Bussiness (empresa)"</h4>
+    <p>G y H = Pensiones → solo trabajan con <strong>UNA</strong> sola aseguradora (no pueden vender a la competencia)</p>
+  </div>
+
+  <h3>Vigencia de las Autorizaciones</h3>
+  <div class="card-grid">
+    <div class="card" style="border-top:4px solid #2563eb">
+      <h4>Persona Física</h4>
+      <p>Vigencia: <strong>3 años</strong></p>
+      <p>Requiere capacitación y actualización</p>
+    </div>
+    <div class="card" style="border-top:4px solid #16a34a">
+      <h4>Persona Moral</h4>
+      <p>Vigencia: <strong>Indefinida</strong></p>
+      <p>Sujeta a cumplimiento de requisitos</p>
+    </div>
+    <div class="card" style="border-top:4px solid #d97706">
+      <h4>Autorización Provisional</h4>
+      <p>Duración máxima: <strong>18 meses</strong></p>
+      <p>Para nuevos agentes en proceso</p>
+    </div>
+  </div>
+
+  <h3>Sanciones (Art. 27 RASF) — en orden de menor a mayor</h3>
+  <div class="alert alert-amber">
+    <strong>Orden progresivo de sanciones:</strong><br>
+    1. <strong>Amonestación</strong> (llamada de atención) →
+    2. <strong>Multa</strong> (sanción económica) →
+    3. <strong>Suspensión</strong> (temporal) →
+    4. <strong>Inhabilitación</strong> (no puede ejercer) →
+    5. <strong>Revocación</strong> (pérdida definitiva de la cédula)
+  </div>
+
+  <div class="mnemonic">
+    <h4>🧠 "AMuSIR" — Amonestación, Multa, Suspensión, Inhabilitación, Revocación</h4>
+  </div>
+
+  <h3>Funciones del Agente</h3>
+  <ul>
+    <li>Intermediar entre asegurado y aseguradora</li>
+    <li>Asesorar al cliente sobre las coberturas</li>
+    <li>Promover y gestionar pólizas</li>
+    <li>Auxiliar en el trámite de siniestros</li>
+    <li><strong>NO</strong> puede modificar unilateralmente los contratos</li>
+  </ul>
+
+  <h3>CONDUSEF — Funciones con Agentes</h3>
+  <ul>
+    <li><strong>Asesorar</strong> a los usuarios</li>
+    <li><strong>Orientar</strong> sobre sus derechos</li>
+    <li><strong>Conciliar</strong> diferencias</li>
+    <li><strong>Arbitrar</strong> conflictos (función principal)</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════ RISP VIDA ═══════════════════════ -->
+<section id="risp-vida" class="section">
+  <h2>💙 Vida Individual (RISP)</h2>
+
+  <h3>Riesgos Básicos Cubiertos</h3>
+  <div class="alert alert-blue">
+    <strong>Los dos riesgos básicos del seguro de vida son: Fallecimiento y Supervivencia</strong>
+  </div>
+
+  <h3>Planes de Vida</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Plan</th><th>¿Qué cubre?</th><th>¿Hasta cuándo?</th></tr>
+      <tr><td class="bold">Temporal</td><td>Solo fallecimiento</td><td>Por un plazo definido. Si sobrevive, la aseguradora no paga nada.</td></tr>
+      <tr><td class="bold">Vitalicio (Ordinario de Vida)</td><td>Fallecimiento en cualquier momento</td><td>Toda la vida o supervivencia a los 99 años</td></tr>
+      <tr><td class="bold">Vida Pagos Limitados</td><td>Fallecimiento toda la vida</td><td>Se paga en período limitado pero cubre toda la vida</td></tr>
+      <tr><td class="bold">Dotal Mixto</td><td>Fallecimiento O supervivencia al plazo</td><td>El que termine primero: muerte o fin de plazo</td></tr>
+      <tr><td class="bold">Dotal Puro</td><td>Solo supervivencia al plazo</td><td>Solo paga si el asegurado llega vivo al final</td></tr>
+    </table>
+  </div>
+
+  <h3>Valores Garantizados — ¡MUY IMPORTANTE!</h3>
+  <div class="alert alert-green">
+    <strong>Requisito:</strong> Tener al menos <strong>3 anualidades completas pagadas</strong> y plazo mayor a 10 años.
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Valor / Opción</th><th>¿Qué significa?</th></tr>
+      <tr><td class="bold">Rescate</td><td>Cancela la póliza y recupera el valor en efectivo de la reserva matemática</td></tr>
+      <tr><td class="bold">Préstamo ordinario</td><td>Disposición de parte de la reserva para lo que el asegurado quiera</td></tr>
+      <tr><td class="bold">Préstamo automático</td><td>Pago de primas vencidas con cargo a la reserva (evita cancelación)</td></tr>
+      <tr><td class="bold">Seguro saldado</td><td>Reducción de suma asegurada hasta lo que alcance la reserva, sin pagar más primas. Mismo plazo.</td></tr>
+      <tr><td class="bold">Seguro prorrogado</td><td>Misma suma asegurada pero por menor plazo (el que alcance la reserva). Sin pagar más primas.</td></tr>
+    </table>
+  </div>
+
+  <div class="mnemonic">
+    <h4>🧠 "RePrePréSalPro" — Rescate, Préstamo ordinario, Préstamo automático, Saldado, Prorrogado</h4>
+    <p><strong>Saldado</strong> = misma DURACIÓN, menor SUMA · <strong>Prorrogado</strong> = misma SUMA, menor DURACIÓN</p>
+  </div>
+
+  <h3>Reservas Matemáticas</h3>
+  <ul>
+    <li>Se forman con los excedentes de la prima nivelada sobre el costo real de mortalidad</li>
+    <li>En los primeros años, el asegurado paga de más → ese excedente = reserva matemática</li>
+    <li>La reserva es la base de los valores garantizados</li>
+  </ul>
+
+  <h3>Dividendos</h3>
+  <p>Utilidades que la aseguradora obtiene del manejo de su cartera y reparte entre los asegurados. No son una obligación contractual.</p>
+
+  <h3>Tabla de Mortalidad</h3>
+  <ul>
+    <li>Instrumento estadístico que mide probabilidades de muerte/supervivencia por edad</li>
+    <li>De ella se obtiene la <strong>prima pura de riesgo</strong></li>
+    <li>Bases: estadística, probabilidad, ley de los grandes números, experiencia pasada</li>
+  </ul>
+
+  <h3>Inmutabilidad</h3>
+  <p>La <strong>imposibilidad de modificar las primas y valores</strong> de las pólizas ya emitidas. Protege al asegurado.</p>
+
+  <h3>Seguros Universales (No tradicionales)</h3>
+  <ul>
+    <li>Ofrecen <strong>flexibilidad</strong>: retiros parciales, depósitos adicionales</li>
+    <li>Tienen <strong>Fondo Básico</strong> (primas mínimas − costos de muerte − gastos administrativos + intereses)</li>
+    <li>Tienen <strong>Fondo Excedente</strong> (primas excedentes + rendimientos)</li>
+    <li>Permiten retiros parciales del valor de rescate</li>
+  </ul>
+
+  <h3>Beneficios Adicionales (Coberturas complementarias)</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>Por Accidente</h4>
+      <ul>
+        <li>Muerte accidental</li>
+        <li>Pérdidas orgánicas</li>
+        <li>Muerte accidental colectiva</li>
+      </ul>
+      <p class="tag tag-amber">Plazo muerte/pérdida: <strong>90 días</strong> post-accidente</p>
+    </div>
+    <div class="card">
+      <h4>Por Invalidez Total y Permanente</h4>
+      <ul>
+        <li>Exención de pago de primas</li>
+        <li>Pago adicional por invalidez</li>
+      </ul>
+      <p class="tag tag-amber">Período de espera: <strong>12 meses</strong> (sin pérdida orgánica)</p>
+    </div>
+  </div>
+
+  <h3>Fiscalidad (LISR)</h3>
+  <div class="alert alert-purple">
+    <strong>Art. 109 LISR — Sin ISR en suma asegurada por sobrevivencia cuando:</strong>
+    El asegurado llegue a los <strong>60 años</strong>, sea él quien pague las primas, y el seguro tenga mínimo <strong>5 años</strong> de antigüedad.
+    <br><br>
+    <strong>Art. 176 LISR:</strong> Deducibles las primas de planes personales de retiro hasta los 65 años.
+  </div>
+</section>
+
+<!-- ═══════════════════════ RISP ACCIDENTES ═══════════════════════ -->
+<section id="risp-accidentes" class="section">
+  <h2>🚑 Accidentes Personales</h2>
+
+  <div class="alert alert-blue">
+    <strong>Definición de Accidente:</strong>
+    Acción súbita, fortuita, violenta, de un agente <strong>externo</strong>, absolutamente ajena a la voluntad del asegurado, que cause lesiones o muerte.
+  </div>
+
+  <div class="mnemonic">
+    <h4>🧠 "SúFor-Vio-Ex-In" — Súbita, Fortuita, Violenta, Externa, Involuntaria</h4>
+  </div>
+
+  <h3>Coberturas del Seguro de Accidentes Personales</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Cobertura</th><th>¿Qué cubre?</th><th>Plazo / Dato clave</th></tr>
+      <tr><td class="bold">Muerte Accidental <span class="tag tag-green">BÁSICA</span></td><td>Fallecimiento dentro de 90 días del accidente</td><td>90 días post-accidente</td></tr>
+      <tr><td class="bold">Pérdidas Orgánicas</td><td>% según escala A o B por cada pérdida</td><td>Tablas de indemnización A y B</td></tr>
+      <tr><td class="bold">Indemnización Diaria</td><td>Reemplaza ingreso perdido por incapacidad</td><td>Total: max 1,460 días · Parcial: max 182 días</td></tr>
+      <tr><td class="bold">Reembolso de Gastos Médicos</td><td>Hospitalización, medicamentos, cirugía, ambulancia (max 5% S.A.)</td><td>Vigencia: 365 días post-accidente</td></tr>
+    </table>
+  </div>
+
+  <h3>Tablas de Pérdidas Orgánicas</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>Escala A — Pérdidas de mayor monto</h4>
+      <ul>
+        <li>Pérdida de ambas manos: <strong>100%</strong></li>
+        <li>Pérdida de ambos pies: <strong>100%</strong></li>
+        <li>Pérdida de ambos ojos: <strong>100%</strong></li>
+        <li>Pérdida de una mano o pie: <strong>50%</strong></li>
+        <li>Pérdida pulgar: <strong>15%</strong></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Escala B — Incluye más pérdidas</h4>
+      <ul>
+        <li>Pie con todos sus dedos: <strong>30%</strong></li>
+        <li>Pulgar + cualquier dedo: <strong>25%</strong></li>
+        <li>Acortamiento ≥5 cm de miembro inferior: <strong>10%</strong></li>
+        <li>Incluye órganos de los sentidos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert alert-amber">
+    <strong>⚠️ Criterios para pérdidas orgánicas:</strong>
+    Mano → separación a nivel de la muñeca hacia arriba · Pie → a nivel del tobillo hacia arriba · Vista → pérdida <strong>irreversible e irreparable</strong>
+  </div>
+
+  <h3>Edades y Clasificaciones</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Cobertura</th><th>Edad mínima</th><th>Otro dato</th></tr>
+      <tr><td>Muerte accidental</td><td>3 años</td><td>—</td></tr>
+      <tr><td>Pérdidas orgánicas</td><td>3 años</td><td>—</td></tr>
+      <tr><td>Indemnización diaria</td><td>18 años</td><td>—</td></tr>
+      <tr><td>Reembolso gastos médicos</td><td>3 años</td><td>—</td></tr>
+      <tr><td>Invalidez Total y Permanente (Vida)</td><td>18 años</td><td>—</td></tr>
+      <tr><td>Beneficios adicionales inv. (Vida)</td><td>18 años</td><td>—</td></tr>
+    </table>
+  </div>
+
+  <div class="alert alert-green">
+    El costo del seguro de A.P. se grava con un <strong>50% adicional</strong> para asegurados entre <strong>61 y 65 años</strong>.
+  </div>
+
+  <h3>Clasificación de Riesgos en A.P.</h3>
+  <p>Los riesgos se clasifican de <strong>A hasta J</strong> (10 clasificaciones) según la ocupación del asegurado. Los factores que se consideran: <strong>Ocupación, Deportes, Calidad moral</strong>.</p>
+</section>
+
+<!-- ═══════════════════════ RISP GMM ═══════════════════════ -->
+<section id="risp-gmm" class="section">
+  <h2>🏥 Gastos Médicos Mayores (GMM)</h2>
+
+  <div class="alert alert-blue">
+    <strong>Objetivo:</strong> Reembolsar los gastos derivados de accidente y/o enfermedad cubierta por la póliza para restablecer la salud del asegurado.
+  </div>
+
+  <h3>Formas de Indemnización</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>Pago Directo</h4>
+      <p>La aseguradora paga <strong>directamente</strong> al hospital o médico. Generalmente en hospitales de la red.</p>
+      <p>Ventaja: puede eliminarse el deducible en hospitales con convenio.</p>
+    </div>
+    <div class="card">
+      <h4>Reembolso</h4>
+      <p>El asegurado paga y la aseguradora le reembolsa presentando facturas.</p>
+      <p>Se aplican deducible y coaseguro al calcular el reembolso.</p>
+    </div>
+  </div>
+
+  <h3>Mecanismos de Participación del Asegurado</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Mecanismo</th><th>¿Qué es?</th></tr>
+      <tr><td class="bold">Deducible</td><td>Cantidad fija que paga primero el asegurado antes de que la aseguradora pague</td></tr>
+      <tr><td class="bold">Coaseguro</td><td>Porcentaje del gasto (después del deducible) que queda a cargo del asegurado. Ej: 10% o 20%</td></tr>
+      <tr><td class="bold">Período de espera</td><td>Tiempo que debe transcurrir antes de que ciertas enfermedades queden cubiertas</td></tr>
+      <tr><td class="bold">GUA</td><td><strong>Gasto Usual y Acostumbrado</strong>. Límite de honorarios que la aseguradora reconoce. Lo que supera el GUA queda a cargo del asegurado.</td></tr>
+    </table>
+  </div>
+
+  <h3>Cálculo del Reembolso</h3>
+  <div class="alert alert-green">
+    Suma de gastos cubiertos → ajustar a límites → <strong>restar deducible</strong> → <strong>restar coaseguro</strong> = monto a pagar
+  </div>
+
+  <h3>Períodos de Espera Importantes</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Enfermedad / Condición</th><th>Período de espera</th></tr>
+      <tr><td>Tumoración mamaria</td><td><strong>1 año</strong></td></tr>
+      <tr><td>Placenta previa</td><td><strong>10 meses</strong></td></tr>
+      <tr><td>Cirugía de nariz/senos paranasales (accidente)</td><td>Coaseguro especial: <strong>50%</strong></td></tr>
+    </table>
+  </div>
+
+  <h3>Exclusiones del GMM</h3>
+  <ul>
+    <li><strong>Enfermedades preexistentes</strong> (diagnosticadas antes de contratar)</li>
+    <li>SIDA</li>
+    <li>Parto normal (no es enfermedad, es previsible)</li>
+    <li>Check-up / tratamientos preventivos</li>
+    <li>Tratamientos de obesidad / calvicie</li>
+    <li>Locura, demencia, neurosis, psicosis</li>
+    <li>Trasplante de órganos</li>
+    <li>Suicidio</li>
+  </ul>
+
+  <div class="alert alert-green">
+    <strong>Sí se cubren complicaciones del embarazo:</strong> embarazo extrauterino, fiebre puerperal, toxicosis gravídica
+  </div>
+
+  <h3>Datos Importantes</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Dato</th><th>Valor</th></tr>
+      <tr><td>Plazo del seguro</td><td><strong>Un año</strong> renovable</td></tr>
+      <tr><td>Tipos de póliza</td><td>Individual y/o familiar</td></tr>
+      <tr><td>Edad máxima de contratación</td><td><strong>64 años</strong></td></tr>
+      <tr><td>Alta de recién nacido (cobertura desde nac.)</td><td>Dentro de <strong>30 días</strong></td></tr>
+      <tr><td>Aviso de siniestro por escrito</td><td>Dentro de <strong>5 días</strong></td></tr>
+      <tr><td>Ambulancia (límite)</td><td><strong>5% de la Suma Asegurada</strong></td></tr>
+      <tr><td>Reinhalación de suma asegurada</td><td>Se reinstala para enfermedades distintas a la que agotó el monto</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════ RISP SALUD ═══════════════════════ -->
+<section id="risp-salud" class="section">
+  <h2>❤️ Seguro de Salud (ISES)</h2>
+
+  <div class="alert alert-blue">
+    <strong>ISES</strong> = Instituciones de Seguros Especializadas en Salud
+  </div>
+
+  <h3>Diferencia Clave: Salud vs. GMM</h3>
+  <div class="grid2">
+    <div class="card" style="border-top:4px solid #dc2626">
+      <h4>❤️ Seguro de Salud</h4>
+      <ul>
+        <li>Busca <strong>prevención primaria y secundaria</strong></li>
+        <li>Evitar enfermedades y detener su progresión</li>
+        <li>Vacunación, check-up, aplicación de flúor</li>
+        <li>Red médica obligatoria</li>
+        <li>El asegurado paga <strong>copago</strong> (porcentaje fijo)</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid #2563eb">
+      <h4>🏥 GMM</h4>
+      <ul>
+        <li>Cubre <strong>tratamiento</strong> de accidente o enfermedad</li>
+        <li>Pago directo o reembolso</li>
+        <li>Deducible + coaseguro</li>
+        <li>Puede usarse fuera de red médica</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>CONAMED</h3>
+  <div class="alert alert-purple">
+    <strong>Comisión Nacional de Arbitraje Médico</strong><br>
+    Resuelve diferencias entre usuarios y prestadores de servicios médicos (de las ISES). Funciones: asesorar, recibir quejas, conciliar, arbitrar y emitir laudos.
+  </div>
+
+  <h3>Niveles de Especialidades</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>Primer nivel / Primer contacto</h4>
+      <ul>
+        <li>Medicina general familiar</li>
+        <li>Medicina interna</li>
+        <li>Pediatría</li>
+        <li>Gineco-obstetricia</li>
+        <li>Cirugía general</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Segundo nivel</h4>
+      <ul>
+        <li>Especialidades: Neurología, Oncología, Gastroenterología, Cardiología, etc.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Períodos de Espera en Seguro de Salud</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Enfermedad</th><th>Período de espera</th></tr>
+      <tr><td>Diabetes Mellitus</td><td><strong>3 años</strong></td></tr>
+      <tr><td>Cirugía de corazón y neurocirugía</td><td><strong>3 años</strong></td></tr>
+      <tr><td>SIDA, insuficiencia renal/hepática, cardiopatías</td><td><strong>3 años</strong></td></tr>
+    </table>
+  </div>
+
+  <h3>Red Médica</h3>
+  <p>Conjunto de médicos y hospitales vinculados a la ISES por convenios que proporcionan servicios a los asegurados. Si el asegurado usa médicos fuera de la red, la ISES paga <strong>según el tabulador</strong>.</p>
+</section>
+
+<!-- ═══════════════════════ RISD AUTOS ═══════════════════════ -->
+<section id="risd-autos" class="section">
+  <h2>🚗 Automóviles (RISD)</h2>
+
+  <h3>Tipos de Vehículos</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Tipo</th><th>Descripción</th></tr>
+      <tr><td class="bold">Residentes</td><td>Fabricados en México o en el extranjero; circulan con placas nacionales o fronterizas (uso particular)</td></tr>
+      <tr><td class="bold">Turistas</td><td>Placas vigentes de otros países o placas fronterizas; no fabricados en el país</td></tr>
+      <tr><td class="bold">Valuados (Clásicos)</td><td>Fabricados en México o extranjero con antigüedad mayor a 15 años, o clásicos de colección</td></tr>
+      <tr><td class="bold">Riesgos Especiales</td><td>Ej: instrucción de manejo, taxis, ambulancias</td></tr>
+    </table>
+  </div>
+
+  <h3>Paquetes de Seguro</h3>
+  <div class="alert alert-blue">
+    <strong>Existen 3 paquetes:</strong> Cobertura Amplia · Cobertura Limitada · Cobertura Básica (solo Responsabilidad Civil)
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Cobertura</th><th>Amplio ✅</th><th>Limitado</th><th>Básico (RC)</th></tr>
+      <tr><td class="bold">Daños Materiales</td><td>✅</td><td>❌ <em>(excluida)</em></td><td>❌</td></tr>
+      <tr><td class="bold">Robo Total</td><td>✅</td><td>✅</td><td>❌</td></tr>
+      <tr><td class="bold">Responsabilidad Civil</td><td>✅</td><td>✅</td><td>✅</td></tr>
+      <tr><td class="bold">Gastos Médicos a Ocupantes</td><td>✅</td><td>✅</td><td>❌</td></tr>
+    </table>
+  </div>
+  <div class="alert alert-amber">
+    <strong>⚠️ Diferencia Amplio vs Limitado: </strong> El Limitado excluye <strong>Daños Materiales</strong>.
+  </div>
+
+  <h3>Coberturas Básicas vs Accesorias</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>Coberturas Básicas</h4>
+      <ul>
+        <li>Daños Materiales</li>
+        <li>Robo Total</li>
+        <li>Responsabilidad Civil</li>
+        <li>Gastos Médicos a Ocupantes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Coberturas Accesorias</h4>
+      <ul>
+        <li>Equipo Especial</li>
+        <li>Adaptaciones y Conversiones</li>
+        <li>Accidentes Automovilísticos al Conductor</li>
+        <li>Defensa Legal / Asistencia Jurídica</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Deducibles por Cobertura</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Cobertura</th><th>Deducible</th></tr>
+      <tr><td>Daños Materiales (pérdida parcial)</td><td><strong>5% del valor comercial</strong> (aprox)</td></tr>
+      <tr><td>Daños Materiales (pérdida total)</td><td><strong>0%</strong></td></tr>
+      <tr><td>Rotura de cristales</td><td><strong>20% del valor del cristal</strong></td></tr>
+      <tr><td>Robo Total</td><td><strong>10% del valor comercial</strong></td></tr>
+      <tr><td>Equipo Especial</td><td><strong>10% sobre el daño o pérdida</strong></td></tr>
+      <tr><td>Responsabilidad Civil</td><td><strong>Sin deducible ni coaseguro</strong></td></tr>
+      <tr><td>Gastos Médicos a Ocupantes</td><td><strong>Sin deducible</strong></td></tr>
+      <tr><td>Accidentes al Conductor</td><td><strong>Sin deducible</strong></td></tr>
+      <tr><td>Defensa Legal</td><td><strong>Sin deducible</strong></td></tr>
+    </table>
+  </div>
+
+  <div class="mnemonic">
+    <h4>🧠 Sin deducible: "RCGMAD" — RC, GM a Ocupantes, Accidentes al Conductor, Defensa Legal</h4>
+    <p>Con deducible: Daños Materiales, Robo Total, Equipo Especial</p>
+  </div>
+
+  <h3>Aspectos Especiales de Cada Cobertura</h3>
+
+  <h4>Daños Materiales</h4>
+  <ul>
+    <li>Cubre: colisión, volcadura, incendio, rayo, explosión, ciclón, granizo, terremoto, inundación, derrumbes, huelgas</li>
+    <li>Exclusiones: descomposturas mecánicas, desgaste natural, perjuicio por privación del uso</li>
+    <li>La aseguradora tiene <strong>72 horas</strong> para valuar los daños</li>
+    <li>Pago = <strong>refacciones + mano de obra a valor comercial</strong></li>
+  </ul>
+
+  <h4>Robo Total</h4>
+  <ul>
+    <li>Si no se contratan Daños Materiales, el Robo Total también cubre: incendio, ciclón, granizo, terremoto, colisión, rotura de cristales</li>
+    <li>Exclusión: robo por <strong>dependientes del asegurado</strong></li>
+    <li>En caso de robo: avisar a <strong>aseguradora Y autoridades</strong></li>
+    <li>Indemnización NO se reinstala automáticamente (ni Equipo Especial, ni Adaptaciones y Conversiones)</li>
+  </ul>
+
+  <h4>Responsabilidad Civil</h4>
+  <ul>
+    <li>Cubre: daño + perjuicio + daño moral consecuencial a terceros</li>
+    <li>Defensa Legal adicional: hasta <strong>100% adicional</strong> de la SA de RC</li>
+    <li>Extensión territorial: <strong>USA y Canadá</strong></li>
+    <li>EXCEPCIÓN: RC y Defensa Legal <strong>NO</strong> se extienden a USA/Canadá</li>
+    <li>LUC (Límite Único Combinado): una sola SA para bienes y personas</li>
+  </ul>
+
+  <h4>Gastos Médicos a Ocupantes</h4>
+  <ul>
+    <li>Cubre a personas en el compartimiento de pasajeros del vehículo asegurado</li>
+    <li>NO cubre a personas en la caja de pick-up</li>
+    <li>SA = por número de pasajeros <strong>autorizados por el fabricante</strong></li>
+    <li>Si viajan más pasajeros: SA total ÷ número de lesionados</li>
+  </ul>
+
+  <h4>Defensa Legal / Asistencia Jurídica</h4>
+  <ul>
+    <li>Cubre detención por accidente de tránsito (delito <strong>culposo</strong>)</li>
+    <li>Delito culposo = accidental, no intencional</li>
+    <li>El Ministerio Público determina la intencionalidad</li>
+    <li>Exclusión: no garantiza libertad si hay <strong>abandono de la víctima</strong></li>
+    <li>Exclusión absoluta: <strong>conducir en estado de ebriedad</strong></li>
+  </ul>
+
+  <h3>Reinstalación de Suma Asegurada</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Cobertura</th><th>¿Se reinstala automáticamente?</th></tr>
+      <tr><td>Daños Materiales</td><td>✅ Sí</td></tr>
+      <tr><td>Robo Total</td><td>❌ No</td></tr>
+      <tr><td>Responsabilidad Civil</td><td>✅ Sí</td></tr>
+      <tr><td>Gastos Médicos a Ocupantes</td><td>✅ Sí</td></tr>
+      <tr><td>Equipo Especial</td><td>❌ No</td></tr>
+      <tr><td>Adaptaciones y Conversiones</td><td>❌ No</td></tr>
+    </table>
+  </div>
+
+  <h3>Ajuste automático de suma asegurada (coberturas)</h3>
+  <p>Se ajustan automáticamente: Daños Materiales, Robo Total, Responsabilidad Civil, Gastos Médicos a Ocupantes (las 4 del paquete amplio).</p>
+
+  <h3>Vehículos Ligeros vs Pesados (Reglamento de Tránsito)</h3>
+  <ul>
+    <li>Ligeros: hasta <strong>3.5 toneladas</strong></li>
+    <li>Pesados: más de <strong>3.5 toneladas</strong></li>
+  </ul>
+
+  <h3>Obligaciones del Asegurado en Siniestro</h3>
+  <ol style="padding-left:1.4rem; line-height:2">
+    <li>Evitar o disminuir el daño</li>
+    <li>Avisar a la compañía tan pronto tenga conocimiento</li>
+    <li>Presentar formal reclamación</li>
+  </ol>
+  <p>La aseguradora tiene <strong>30 días</strong> para pagar desde la entrega completa de documentos. Si no paga, genera <strong>intereses moratorios</strong>.</p>
+</section>
+
+<!-- ═══════════════════════ RISD HOGAR ═══════════════════════ -->
+<section id="risd-hogar" class="section">
+  <h2>🏠 Hogar – Póliza Múltiple Familiar</h2>
+
+  <div class="alert alert-blue">
+    <strong>La Póliza Múltiple Familiar tiene 3 secciones:</strong>
+    <strong>I. Incendio</strong> · <strong>II. Diversos</strong> · <strong>III. Responsabilidad Civil</strong>
+  </div>
+
+  <h3>Valores Asegurables</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Valor</th><th>Definición</th></tr>
+      <tr><td class="bold">Valor de Reposición</td><td>Valor para reponer el bien sin considerar depreciación. "Nuevo por viejo."</td></tr>
+      <tr><td class="bold">Valor Real</td><td>Valor de reposición <strong>con depreciación</strong> por uso</td></tr>
+      <tr><td class="bold">Valor Convenido</td><td>Acordado entre asegurado y aseguradora. Aplica sin discusión en siniestro.</td></tr>
+      <tr><td class="bold">Proporción Indemnizable</td><td>Relación SA / Valor real del bien</td></tr>
+      <tr><td class="bold">Primer Riesgo</td><td>Elimina la proporcionalidad. Se paga hasta la SA sin importar el valor total del bien.</td></tr>
+    </table>
+  </div>
+
+  <h3>Sección I — Incendio</h3>
+  <div class="card">
+    <h4>Cobertura básica: "A todo riesgo de incendio"</h4>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Riesgo</th><th>Deducible</th><th>Coaseguro</th></tr>
+        <tr><td>Incendio, rayo, explosión</td><td><strong>0% (sin deducible)</strong></td><td>—</td></tr>
+        <tr><td>Sección Incendio (general)</td><td><strong>1%</strong></td><td>—</td></tr>
+        <tr><td>Terremoto / Erupción volcánica</td><td><strong>2%</strong></td><td><strong>20%</strong></td></tr>
+        <tr><td>Fenómenos hidro-meteorológicos</td><td>—</td><td><strong>10%</strong></td></tr>
+      </table>
+    </div>
+    <ul>
+      <li>Gastos extraordinarios: hasta <strong>6 meses</strong> de renta</li>
+      <li>Remoción de escombros: <strong>20%</strong> de la SA básica (requiere <em>convenio expreso</em>)</li>
+    </ul>
+  </div>
+
+  <h3>Sección II — Diversos (Robo)</h3>
+  <div class="card">
+    <p>Robo con violencia tiene <strong>3 incisos</strong>:</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Inciso</th><th>¿Qué cubre?</th><th>Deducible</th></tr>
+        <tr><td>I</td><td>Muebles en general</td><td>—</td></tr>
+        <tr><td>II</td><td>Equipo fotográfico</td><td><strong>15%</strong></td></tr>
+        <tr><td>III</td><td>Armas y joyas</td><td><strong>15%</strong></td></tr>
+      </table>
+    </div>
+    <h4>Cristales</h4>
+    <ul>
+      <li>Opera a <strong>Primer Riesgo</strong></li>
+      <li>Grosor mínimo: <strong>4 mm</strong></li>
+      <li>Deducible: <strong>4 días de salario mínimo</strong></li>
+    </ul>
+  </div>
+
+  <h3>Sección III — Responsabilidad Civil</h3>
+  <div class="card">
+    <div class="grid2">
+      <div>
+        <h4>RC Familiar</h4>
+        <ul>
+          <li>Opera en <strong>toda la República</strong></li>
+          <li>Cubre: daño + perjuicio + daño moral consecuencial</li>
+          <li>Asegurados: cónyuge + hijos menores + servidumbre</li>
+        </ul>
+      </div>
+      <div>
+        <h4>RC Arrendatario</h4>
+        <ul>
+          <li><strong>Obligatoria</strong> si el asegurado no es propietario</li>
+          <li>Protege al arrendador de daños al inmueble rentado</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:0.8rem"><strong>Gastos de defensa legal:</strong> hasta el <strong>50% de la SA</strong></p>
+  </div>
+
+  <div class="alert alert-amber">
+    <strong>CONDUSEF en Hogar:</strong> Servicio gratuito para cualquier usuario.
+  </div>
+</section>
+
+<!-- ═══════════════════════ RISD EMBARCACIONES ═══════════════════════ -->
+<section id="risd-embarcaciones" class="section">
+  <h2>⛵ Embarcaciones Menores de Placer</h2>
+
+  <div class="alert alert-blue">
+    <strong>¿Qué embarcaciones cubre?</strong>
+    Lanchas, veleros, yates. Máximo <strong>15 metros de eslora</strong> y <strong>500 unidades de arqueo bruto</strong>. Solo para turismo y recreo (<strong>NO</strong> carga ni lucro).
+  </div>
+
+  <h3>Tipos de Navegación</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Tipo</th><th>Descripción</th><th>¿Cubierto?</th></tr>
+      <tr><td class="bold">Interior</td><td>Ríos, lagos, lagunas</td><td>✅ Sí</td></tr>
+      <tr><td class="bold">Cabotaje</td><td>Litorales y costas nacionales</td><td>✅ Sí</td></tr>
+      <tr><td class="bold">Altura</td><td>Navegación internacional</td><td>❌ NO cubierta</td></tr>
+    </table>
+  </div>
+
+  <h3>Bienes Cubiertos vs Excluidos</h3>
+  <div class="grid2">
+    <div class="card" style="border-top:4px solid #16a34a">
+      <h4>✅ Cubiertos</h4>
+      <ul>
+        <li>Casco</li>
+        <li>Maquinaria</li>
+        <li>Bote salvavidas</li>
+        <li>Equipo de radio y navegación</li>
+        <li>Velas</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid #dc2626">
+      <h4>❌ Excluidos</h4>
+      <ul>
+        <li>Amarras</li>
+        <li>Equipo de pesca</li>
+        <li>Efectos personales</li>
+        <li>Refacciones</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Riesgos Básicos Cubiertos</h3>
+  <div class="card">
+    <p><span class="tag tag-green">Cobertura básica</span></p>
+    <ul>
+      <li>Encallamiento, hundimiento, volcadura</li>
+      <li>Explosión, incendio</li>
+      <li>Avería particular</li>
+      <li>Avería gruesa</li>
+      <li>Robo total</li>
+      <li>Gastos de salvamento: <strong>$12 USD/milla de remolque</strong></li>
+      <li>Remoción de restos: <strong>25% del valor de la embarcación</strong></li>
+    </ul>
+  </div>
+
+  <h3>Averías — ¡Distinción Clave!</h3>
+  <div class="grid2">
+    <div class="card" style="border-top:4px solid #2563eb">
+      <h4>Avería Particular</h4>
+      <p>Daño parcial <strong>accidental</strong>. Solo afecta a la embarcación asegurada.</p>
+      <p><span class="tag tag-amber">Requiere convenio expreso</span></p>
+    </div>
+    <div class="card" style="border-top:4px solid #dc2626">
+      <h4>Avería Gruesa</h4>
+      <p>Pérdida parcial <strong>deliberada</strong> para evitar una pérdida total. Se rige por Reglas de <strong>York-Amberes</strong>. Todos los interesados contribuyen.</p>
+      <p><span class="tag tag-green">Cobertura básica</span></p>
+    </div>
+  </div>
+
+  <div class="alert alert-amber">
+    <strong>⚠️ Mnemotécnica: Avería Particular = Parcial + accidental. Avería Gruesa = deliberada (para el bien de todos).</strong>
+  </div>
+
+  <h3>Coberturas bajo Convenio Expreso</h3>
+  <ul>
+    <li>Avería particular</li>
+    <li>Abordaje (colisión entre embarcaciones): máximo <strong>¾ de la responsabilidad</strong></li>
+    <li>PANDI (Protección e Indemnización): daños a terceros en bienes y personas</li>
+    <li>Huelgas</li>
+    <li>Gastos médicos a ocupantes</li>
+  </ul>
+
+  <h3>PANDI</h3>
+  <div class="alert alert-purple">
+    <strong>Protección e Indemnización</strong><br>
+    Cubre daños a terceros en bienes y personas.<br>
+    Cobertura inicia el <span class="hl">20 de febrero</span> de cada año.<br>
+    Exclusión: buceo por <strong>familiares</strong> del asegurado.
+  </div>
+
+  <h3>Abordaje</h3>
+  <ul>
+    <li>Colisión entre dos o más embarcaciones</li>
+    <li>Si ambas son culpables: <strong>responsabilidades recíprocas</strong></li>
+    <li>La causa del daño es quien colisiona</li>
+  </ul>
+
+  <h3>Definiciones Clave</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Término</th><th>Definición</th></tr>
+      <tr><td class="bold">Encallamiento</td><td>La embarcación queda varada en <strong>coral, roca o arrecife</strong></td></tr>
+      <tr><td class="bold">Varadura</td><td>La embarcación queda varada en <strong>lodo, arena o fango</strong></td></tr>
+      <tr><td class="bold">Echazón</td><td>Arrojar carga por la borda para aligerar la embarcación (avería gruesa)</td></tr>
+      <tr><td class="bold">Motor fuera de borda</td><td>Motor con hélice ubicado en la <strong>popa</strong> de la embarcación</td></tr>
+      <tr><td class="bold">Eslora</td><td>Longitud de la embarcación (máx. 15 m para esta póliza)</td></tr>
+    </table>
+  </div>
+
+  <h3>Ley de Navegación y Comercio Marítimo</h3>
+  <ul>
+    <li>Clasifica las embarcaciones</li>
+    <li>Permite a extranjeros usar embarcaciones <strong>deportivas, recreativas y turísticas</strong></li>
+    <li>Los extranjeros <strong>NO</strong> pueden usarlas para fuerza naval o actividades de lucro</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════ PRÁCTICA ═══════════════════════ -->
+<section id="practica" class="section">
+  <h2>🎯 Preguntas de Repaso</h2>
+  <div class="alert alert-green"><strong>Haz clic en cada pregunta para ver la respuesta correcta.</strong></div>
+
+  <h3>Sistema Financiero</h3>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Cuál es la máxima autoridad del Sistema Financiero Mexicano? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">b) SHCP</span> — Secretaría de Hacienda y Crédito Público</div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Qué institución regula la política monetaria y cambiaria en México? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Banco de México (Banxico)</span> — Es el banco central del país.</div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Cuál instrumento financiero del gobierno es el más líquido y seguro? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">CETES</span> — Certificados de la Tesorería. Renta fija, gobierno federal, máxima liquidez.</div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Qué instrumento está ligado al INPC (inflación)? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Udibonos</span> — Bonos del gobierno indexados a las UDIs (Unidades de Inversión), que siguen el INPC.</div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Cuál es la función principal de la CONDUSEF? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Arbitraje</span> — También asesora, orienta y concilia, pero su función principal es el arbitraje.</div></div>
+
+  <h3>Marco Legal y Agentes</h3>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿En cuántos días debe avisarse un siniestro a la aseguradora? (Art. 66 LSCS) <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">5 días</span> desde que el asegurado tiene conocimiento del siniestro.</div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Cuánto tiempo prescribe una acción derivada del contrato de seguro? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">2 años</span> — Art. 81 LSCS</div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Qué cédula autoriza al agente para seguros de pensiones, y cuántas aseguradoras puede manejar? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Cédulas G y H — Solo puede trabajar con UNA aseguradora.</span></div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Cuánto tiempo dura la autorización provisional de un agente? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Máximo 18 meses.</span></div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">Ordena las sanciones de menor a mayor gravedad para un agente. <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Amonestación → Multa → Suspensión → Inhabilitación → Revocación</span> (Art. 27 RASF)</div></div>
+
+  <h3>Vida Individual</h3>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Qué son los valores garantizados y cuántas anualidades se requieren? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Derechos de uso de la reserva matemática. Se requieren 3 anualidades completas pagadas</span> y plazo mayor a 10 años.</div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Cuál es la diferencia entre seguro saldado y seguro prorrogado? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Saldado = misma duración, menor suma asegurada. Prorrogado = misma suma asegurada, menor plazo.</span></div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Qué plan de vida solo cubre fallecimiento por un plazo definido y no paga si el asegurado sobrevive? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Plan Temporal.</span></div></div>
+
+  <h3>Automóviles</h3>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Qué cobertura se excluye en el paquete limitado respecto al amplio? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Daños Materiales.</span></div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Qué coberturas NO tienen deducible en la póliza de autos? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Responsabilidad Civil, Gastos Médicos a Ocupantes, Accidentes al Conductor y Defensa Legal.</span></div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Cuánto tiempo tiene la aseguradora para valuar los daños de un vehículo? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">72 horas</span> desde que el asegurado dio aviso.</div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿En cuáles casos el asegurado puede pedir pérdida total? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Cuando la reparación supera el 50% sin llegar al 75% del valor del auto.</span></div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Qué coberturas se extienden a USA y Canadá pero cuáles NO? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Se extienden: DM, Robo, GMO, Accidentes al Conductor. NO se extienden: RC y Defensa Legal.</span></div></div>
+
+  <h3>Hogar</h3>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Cuál es el deducible para terremoto en la póliza de hogar? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">2% de deducible y 20% de coaseguro.</span></div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿En qué zona opera la RC Familiar del hogar? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">En toda la República Mexicana.</span></div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Cuál es el deducible de cristales en la póliza de hogar? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">4 días de salario mínimo.</span></div></div>
+
+  <h3>Embarcaciones</h3>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Cuál tipo de navegación NO está cubierta en esta póliza? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Altura (navegación internacional).</span></div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Cuál es la diferencia entre encallamiento y varadura? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Encallamiento = coral, roca, arrecife. Varadura = lodo, arena, fango.</span></div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Qué es la avería gruesa? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">Pérdida parcial DELIBERADA para evitar una pérdida total. Se rige por Reglas de York-Amberes. Es cobertura básica.</span></div></div>
+  <div class="qa-block"><div class="qa-q" onclick="toggleQA(this)">¿Cuándo inicia la cobertura PANDI cada año? <span class="arrow">▼</span></div><div class="qa-a"><span class="qa-correct">El 20 de febrero de cada año.</span></div></div>
+</section>
+
+</main>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const clicked = document.querySelector(`[onclick="show('${id}')"]`);
+  if (clicked) clicked.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function toggleQA(el) {
+  const ans = el.nextElementSibling;
+  el.classList.toggle('open');
+  ans.classList.toggle('visible');
+}
+</script>
+</body>
+</html>
