@@ -95,7 +95,52 @@
 
   /* GRID 2 */
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  @media(max-width: 700px) { .grid2 { grid-template-columns: 1fr; } #sidebar { display: none; } #main { margin-left: 0; } }
+  /* HAMBURGER BUTTON */
+  #hamburger {
+    display: none; position: fixed; top: 0.8rem; left: 0.8rem; z-index: 200;
+    background: var(--navy); color: #fff; border: none; border-radius: 8px;
+    width: 42px; height: 42px; cursor: pointer; font-size: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3); align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  #hamburger:hover { background: #243a5a; }
+
+  /* OVERLAY */
+  #overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    z-index: 90; backdrop-filter: blur(2px);
+  }
+  #overlay.visible { display: block; }
+
+  /* FLOATING HOME BUTTON */
+  #btn-home {
+    position: fixed; bottom: 1.4rem; right: 1.4rem; z-index: 150;
+    background: var(--blue); color: #fff; border: none; border-radius: 50px;
+    padding: 0.65rem 1.1rem; font-size: 0.82rem; font-weight: 700;
+    cursor: pointer; box-shadow: 0 3px 12px rgba(37,99,235,0.45);
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: all 0.2s; text-decoration: none;
+  }
+  #btn-home:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 5px 16px rgba(37,99,235,0.5); }
+  #btn-home span { font-size: 1rem; }
+
+  /* MOBILE */
+  @media(max-width: 700px) {
+    .grid2 { grid-template-columns: 1fr; }
+    #sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 100;
+    }
+    #sidebar.open { transform: translateX(0); }
+    #main { margin-left: 0; padding: 1.2rem 1rem 5rem; padding-top: 4rem; }
+    #hamburger { display: flex; }
+    h2 { font-size: 1.3rem; }
+    .hero h2 { font-size: 1.4rem; }
+    .card-grid { grid-template-columns: 1fr; }
+    .module-cards { grid-template-columns: repeat(2, 1fr); }
+    table { font-size: 0.78rem; }
+  }
 
   /* HOME HERO */
   .hero { background: linear-gradient(135deg, var(--navy), #1e40af); border-radius: 12px; padding: 2rem; color: #fff; margin-bottom: 1.5rem; }
@@ -114,6 +159,15 @@
 </style>
 </head>
 <body>
+
+<!-- HAMBURGER -->
+<button id="hamburger" onclick="toggleSidebar()" aria-label="Menú">☰</button>
+
+<!-- OVERLAY (mobile) -->
+<div id="overlay" onclick="toggleSidebar()"></div>
+
+<!-- FLOATING HOME BUTTON -->
+<button id="btn-home" onclick="show('home')"><span>🏠</span> Inicio</button>
 
 <!-- SIDEBAR -->
 <nav id="sidebar">
@@ -1376,6 +1430,23 @@ function show(id) {
   const clicked = document.querySelector(`[onclick="show('${id}')"]`);
   if (clicked) clicked.classList.add('active');
   window.scrollTo(0, 0);
+  // Close sidebar on mobile after navigating
+  if (window.innerWidth <= 700) closeSidebar();
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  const ham = document.getElementById('hamburger');
+  const isOpen = sidebar.classList.toggle('open');
+  overlay.classList.toggle('visible', isOpen);
+  ham.textContent = isOpen ? '✕' : '☰';
+}
+
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('visible');
+  document.getElementById('hamburger').textContent = '☰';
 }
 
 function toggleQA(el) {
@@ -1383,6 +1454,18 @@ function toggleQA(el) {
   el.classList.toggle('open');
   ans.classList.toggle('visible');
 }
+
+// Hide home button when already on home
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('btn-home');
+  // Show/hide home btn based on current section
+  const obs = new MutationObserver(() => {
+    const homeActive = document.getElementById('home').classList.contains('active');
+    btn.style.display = homeActive ? 'none' : 'flex';
+  });
+  document.querySelectorAll('.section').forEach(s => obs.observe(s, {attributes: true, attributeFilter: ['class']}));
+  btn.style.display = 'none'; // hidden on home initially
+});
 </script>
 </body>
 </html>
